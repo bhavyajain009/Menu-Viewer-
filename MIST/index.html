@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Menu Viewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mess Menu Viewer</h1>
+            <div class="countdown-container">
+                <h2 id="next-meal">Next: <span id="next-meal-name">Loading...</span></h2>
+                <div id="countdown" class="countdown">00:00:00</div>
+            </div>
+            <button id="settings-btn" class="settings-btn">⚙️ Settings</button>
+        </header>
+
+        <div class="week-navigation">
+            <button id="prev-week" class="nav-button">Previous Week</button>
+            <h2 id="current-week">Current Week</h2>
+            <button id="next-week" class="nav-button">Next Week</button>
+        </div>
+
+        <div class="menu-container">
+            <!-- Menu will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Settings</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="meal-times">Meal Times</button>
+                <button class="tab-btn" data-tab="menu-items">Menu Items</button>
+                <button class="tab-btn" data-tab="notifications">Notifications</button>
+            </div>
+            
+            <div id="meal-times" class="tab-content active">
+                <h3>Meal Times</h3>
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label for="breakfast-time">Breakfast Time:</label>
+                        <div class="time-inputs">
+                            <input type="time" id="breakfast-start" class="time-input">
+                            <span>to</span>
+                            <input type="time" id="breakfast-end" class="time-input">
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="lunch-time">Lunch Time:</label>
+                        <div class="time-inputs">
+                            <input type="time" id="lunch-start" class="time-input">
+                            <span>to</span>
+                            <input type="time" id="lunch-end" class="time-input">
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="evening-snack-time">Evening Snack Time:</label>
+                        <div class="time-inputs">
+                            <input type="time" id="evening-snack-start" class="time-input">
+                            <span>to</span>
+                            <input type="time" id="evening-snack-end" class="time-input">
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="dinner-time">Dinner Time:</label>
+                        <div class="time-inputs">
+                            <input type="time" id="dinner-start" class="time-input">
+                            <span>to</span>
+                            <input type="time" id="dinner-end" class="time-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="menu-items" class="tab-content">
+                <h3>Menu Items</h3>
+                <div class="day-selection">
+                    <label for="day-select">Select Day:</label>
+                    <select id="day-select">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                    </select>
+                </div>
+                <div class="meal-selection">
+                    <label for="meal-select">Select Meal:</label>
+                    <select id="meal-select">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="eveningSnack">Evening Snack</option>
+                        <option value="dinner">Dinner</option>
+                    </select>
+                </div>
+                <div class="menu-editor">
+                    <label for="menu-items-input">Menu Items (one per line):</label>
+                    <textarea id="menu-items-input" rows="6"></textarea>
+                </div>
+            </div>
+            
+            <div id="notifications" class="tab-content">
+                <h3>Notification Settings</h3>
+                <p>Get alerts when it's time for your meals!</p>
+                
+                <div class="notification-switch">
+                    <span>Enable meal notifications</span>
+                    <label class="switch">
+                        <input type="checkbox" id="notification-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="notification-info">
+                    <p>When enabled, you'll receive an alert when each meal time begins, showing you what's on the menu.</p>
+                    <ul>
+                        <li>Notifications appear on the top right of the screen</li>
+                        <li>You can dismiss or snooze notifications</li>
+                        <li>A sound will play to alert you</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="save-settings" class="save-btn">Save Changes</button>
+                <button id="reset-settings" class="reset-btn">Reset to Default</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script src="debug.js"></script>
+</body>
+</html> 
